@@ -1,0 +1,26 @@
+{
+  "table_id": "outcomes_product_year",
+  "schema_version": "1.0.0",
+  "primary_key": ["economy_id", "year", "hs6"],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "hs6": "String",
+    "export_coverage_normal": "Boolean",
+    "green_product_rca": "Float64",
+    "green_product_rca_below_one": "Boolean"
+  },
+  "units": {
+    "green_product_rca": "Balassa_RCA_ratio"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "green_product_rca": "reported_export_coverage_with_no_exports_of_green_product"
+  },
+  "transformations": [
+    "calculate_RCA_on_all_HS96_exports_before_restricting_to_main_green_products",
+    "preserve_current_product_year_primitives_only",
+    "do_not_materialize_future_horizon_entry_rows",
+    "treatment_year_t_uses_baseline_product_state_at_t_minus_one"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "table_id": "tiva_measures",
+  "schema_version": "1.0.0",
+  "primary_key": ["economy_id", "year", "specification_id"],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "specification_id": "String",
+    "gfvad_raw": "Float64",
+    "dvashare_raw": "Float64",
+    "gfvad_missing_reason": "String",
+    "dvashare_missing_reason": "String",
+    "gfvad_out_of_range": "Boolean",
+    "dvashare_out_of_range": "Boolean"
+  },
+  "units": {
+    "gfvad_raw": "fraction_of_final_demand_value_added",
+    "dvashare_raw": "percent_of_gross_exports"
+  },
+  "period": [1995, 2022],
+  "zero_semantics": {
+    "gfvad_raw": "zero_is_a_retained_zero_foreign_value_added_dependence_when_all_required_activity_values_exist",
+    "dvashare_raw": "zero_is_a_retained_zero_percent_domestic_value_added_share_when_all_required_activity_values_exist"
+  },
+  "transformations": [
+    "use_only_official_50_leaf_activities_and_exclude_aggregates_and_ROW",
+    "freeze_country_specific_2000_2004_PROD_weights_for_confirmatory_broad_and_equipment_sets",
+    "use_positive_finite_FD_VA_as_the_only_DFD_FVA_denominator",
+    "require_all_set_activities_without_null_skipping_or_re_normalization",
+    "use_EXGR_DVA_percent_of_gross_exports_with_the_same_fixed_weights",
+    "retain_and_flag_out_of_range_ratios_in_the_main_authority",
+    "never_clip_raw_ratios"
+  ]
+}

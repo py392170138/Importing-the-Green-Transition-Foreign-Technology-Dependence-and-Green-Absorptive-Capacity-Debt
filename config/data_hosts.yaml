@@ -1,0 +1,17 @@
+allowed_hosts:
+  - api.openalex.org
+  - api.worldbank.org
+  - climatepolicydatabase.org
+  - data-explorer.oecd.org
+  - datahelpdesk.worldbank.org
+  - developers.openalex.org
+  - ilostat.ilo.org
+  - one.oecd.org
+  - pxweb.irena.org
+  - sdmx.oecd.org
+  - unstats.un.org
+  - wits.worldbank.org
+  - www.apec.org
+  - www.cepii.fr
+  - www.irena.org
+  - www.oecd.org

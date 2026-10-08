@@ -1,0 +1,23 @@
+{
+  "registry_id": "gad_fixed_scaler",
+  "schema_version": "1.0.0",
+  "canonical_payload": ["registry_version", "columns", "years", "provisional_sample_manifest_hash", "rows"],
+  "frozen_columns": [
+    "green_import_intensity_raw",
+    "green_import_complexity_raw",
+    "gfvad_raw",
+    "gsci_raw",
+    "gud_raw",
+    "grd_raw",
+    "gnir_raw"
+  ],
+  "years": [2000, 2004],
+  "center": "median",
+  "scale": "1.4826_times_MAD_else_IQR_div_1.349",
+  "transformations": [
+    "fit_only_on_provisional_core_complete_matched_source_rows",
+    "forbid_outcome_columns_and_winsorization",
+    "hash_the_explicit_canonical_payload_with_SHA_256",
+    "verify_hash_before_apply_and_append_z0_columns_without_mutating_raw_columns"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "table_id": "regression_bounds",
+  "schema_version": "1.0.0",
+  "primary_key": ["source_column"],
+  "columns": {
+    "source_column": "String",
+    "lower_percentile": "UInt8",
+    "upper_percentile": "UInt8",
+    "fit_start_year": "Int16",
+    "fit_end_year": "Int16",
+    "lower_bound": "Float64",
+    "upper_bound": "Float64",
+    "nonnull_fit_rows": "UInt32",
+    "underlying_fit_rows": "UInt32",
+    "canonical_hash": "String"
+  },
+  "units": {
+    "lower_percentile": "percentile",
+    "upper_percentile": "percentile",
+    "fit_start_year": "calendar_year",
+    "fit_end_year": "calendar_year"
+  },
+  "period": null,
+  "zero_semantics": {
+    "lower_bound": "valid_numeric_bound",
+    "upper_bound": "valid_numeric_bound"
+  },
+  "transformations": [
+    "fit_once_on_underlying_confirmatory_economy_year_frame_2000_2022_before_horizon_duplication",
+    "linear_first_and_ninety_ninth_percentiles",
+    "append_regression_copies_without_mutating_raw_columns",
+    "exclude_identifiers_flags_years_horizons_ranks_and_no_regression_clipping_sources",
+    "hash_independently_from_the_GAD_scaler"
+  ]
+}

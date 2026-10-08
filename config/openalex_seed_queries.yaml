@@ -1,0 +1,29 @@
+schema_version: 1
+topic_query_date: "2026-08-21"
+seed_families:
+  renewable_energy:
+    - photovoltaic
+    - wind power
+    - hydropower
+    - geothermal energy
+    - bioenergy
+  storage_and_grids:
+    - electrochemical battery
+    - energy storage
+    - smart grid
+    - power electronics
+  efficiency_and_electrification:
+    - energy efficiency
+    - heat pump
+    - electric vehicle
+    - industrial electrification
+  low_carbon_industry:
+    - green hydrogen
+    - carbon capture
+    - low carbon cement
+    - low carbon steel
+  circular_resources:
+    - circular economy
+    - recycling technology
+    - waste treatment
+    - water treatment

@@ -1,0 +1,36 @@
+{
+  "table_id": "tiva_activity_year",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "economy_id",
+    "year",
+    "activity",
+    "indicator_id"
+  ],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "activity": "String",
+    "indicator_id": "String",
+    "value": "Float64",
+    "unit": "String",
+    "source_dataflow": "String",
+    "source_status": "String"
+  },
+  "units": {
+    "value": "indicator_specific_USD_millions_or_percent"
+  },
+  "period": [1995, 2022],
+  "zero_semantics": {
+    "value": "reported_zero_is_retained_and_negative_source_values_are_not_silently_clipped"
+  },
+  "transformations": [
+    "parse_all_ten_CSV_columns_with_OBS_VALUE_Float64",
+    "require_MAINLV_W_USD_A_UNIT_MULT_6_for_level_fields",
+    "require_MAINSH_W_A_UNIT_MULT_0_and_exact_share_unit",
+    "append_DFD_FVA_1995_1999_only_after_identity_and_nonoverlap_checks",
+    "retain_FD_VA_1995_2022_as_a_separate_indicator",
+    "identify_exactly_50_leaf_activities_from_the_official_structure_workbook",
+    "exclude_aggregate_areas_and_activities_after_recording_raw_coverage"
+  ]
+}

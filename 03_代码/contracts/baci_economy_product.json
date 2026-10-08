@@ -1,0 +1,43 @@
+{
+  "table_id": "baci_economy_product",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "taxonomy_version",
+    "year",
+    "flow_role",
+    "economy_id",
+    "hs6"
+  ],
+  "columns": {
+    "taxonomy_version": "String",
+    "year": "Int16",
+    "flow_role": "String",
+    "economy_id": "String",
+    "hs6": "String",
+    "trade_value_usd": "Float64",
+    "quantity_tonnes": "Float64",
+    "quantity_observation_count": "UInt64",
+    "weighted_green_trade_usd": "Float64",
+    "source_row_count": "UInt64"
+  },
+  "units": {
+    "trade_value_usd": "current_USD",
+    "quantity_tonnes": "metric_tonnes",
+    "quantity_observation_count": "source_rows_with_reported_quantity",
+    "weighted_green_trade_usd": "current_USD",
+    "source_row_count": "source_rows"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "trade_value_usd": "reported_BACI_zero_is_retained",
+    "quantity_tonnes": "reported_BACI_zero_is_retained_and_null_means_no_reported_quantity",
+    "weighted_green_trade_usd": "null_for_all_product_layers_and_zero_is_retained_for_green_layers",
+    "source_row_count": "zero_only_for_an_empty_authoritative_partition"
+  },
+  "transformations": [
+    "aggregate_each_bounded_record_batch_before_scratch_write",
+    "compact_repeated_batch_keys_before_authoritative_publish",
+    "never_materialize_all_product_bilateral_trade",
+    "separate_HS96_and_native_HS07_taxonomy_versions"
+  ]
+}

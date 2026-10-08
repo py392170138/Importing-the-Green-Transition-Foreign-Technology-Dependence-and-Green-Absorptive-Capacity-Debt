@@ -1,0 +1,9 @@
+{
+  "beta": 2.0,
+  "economies": 60,
+  "parquet_sha256": "7cbc0f34d820f0db1cb6ad03d4b6651b4e18d3cbfbf85692a7e9fb63a0468e18",
+  "rows": 1200,
+  "seed": 20260820,
+  "theta": -0.5,
+  "years": 20
+}

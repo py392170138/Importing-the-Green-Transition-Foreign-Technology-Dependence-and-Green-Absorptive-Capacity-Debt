@@ -1,0 +1,49 @@
+{
+  "table_id": "gad_scaled_components",
+  "schema_version": "1.0.0",
+  "primary_key": ["economy_id", "year"],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "green_import_intensity_raw": "Float64",
+    "green_import_complexity_raw": "Float64",
+    "gfvad_raw": "Float64",
+    "gsci_raw": "Float64",
+    "gud_raw": "Float64",
+    "grd_raw": "Float64",
+    "gnir_raw": "Float64",
+    "z0_green_import_intensity_raw": "Float64",
+    "z0_green_import_complexity_raw": "Float64",
+    "z0_gfvad_raw": "Float64",
+    "z0_gsci_raw": "Float64",
+    "z0_gud_raw": "Float64",
+    "z0_grd_raw": "Float64",
+    "z0_gnir_raw": "Float64"
+  },
+  "units": {
+    "green_import_intensity_raw": "ln_one_plus_ratio",
+    "green_import_complexity_raw": "lagged_GPCI_import_share_weighted_mean",
+    "gfvad_raw": "fraction_of_final_demand_value_added",
+    "gsci_raw": "ln_one_plus_decayed_green_works_per_current_year_million_persons",
+    "gud_raw": "sum_green_upstream_product_weights",
+    "grd_raw": "green_upstream_weighted_mean_product_space_relatedness_density",
+    "gnir_raw": "fraction",
+    "z0_green_import_intensity_raw": "frozen_robust_z_score",
+    "z0_green_import_complexity_raw": "frozen_robust_z_score",
+    "z0_gfvad_raw": "frozen_robust_z_score",
+    "z0_gsci_raw": "frozen_robust_z_score",
+    "z0_gud_raw": "frozen_robust_z_score",
+    "z0_grd_raw": "frozen_robust_z_score",
+    "z0_gnir_raw": "frozen_robust_z_score"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "gnir_raw": "zero_is_a_valid_raw_trade_reliance_value",
+    "z0_gnir_raw": "zero_means_exactly_the_frozen_baseline_center_not_a_raw_zero"
+  },
+  "transformations": [
+    "retain_raw_columns_unchanged",
+    "append_z0_columns_from_the_verified_single_frozen_scaler_registry",
+    "never_winsorize_or_refit_by_outcome_or_variant"
+  ]
+}

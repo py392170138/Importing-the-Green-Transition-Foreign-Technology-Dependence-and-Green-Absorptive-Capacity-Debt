@@ -1,0 +1,40 @@
+{
+  "table_id": "descriptive_path",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "outcome_id", "horizon", "gad_version", "sample_version"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "created_at_utc": "String",
+    "path_family": "String",
+    "outcome_id": "String",
+    "horizon": "Int16",
+    "gad_version": "String",
+    "sample_version": "String",
+    "n": "UInt32",
+    "economies": "UInt16",
+    "year_min": "Int16",
+    "year_max": "Int16",
+    "mean_delta_outcome": "Float64",
+    "interpretation_status": "String"
+  },
+  "units": {
+    "horizon": "years_after_treatment",
+    "year_min": "calendar_year",
+    "year_max": "calendar_year",
+    "mean_delta_outcome": "outcome_specific_change_or_precomputed_future_entry_rate"
+  },
+  "period": null,
+  "zero_semantics": {
+    "mean_delta_outcome": "valid_exact_zero_average_path_value"
+  },
+  "null_semantics": {},
+  "transformations": [
+    "environmental_paths_use_horizons_zero_through_three",
+    "industrial_paths_use_horizons_three_through_eight",
+    "all_rows_are_labeled_noncausal_descriptive"
+  ]
+}

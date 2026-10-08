@@ -1,0 +1,45 @@
+schema_version: 1
+
+taxonomy:
+  counts: {main: 126, broad: 248, apec: 54}
+  overlap_years: [2007, 2010]
+  source_hs: HS07
+  main_hs: HS96
+  upstream_bec_uses: [intermediate, capital]
+
+openalex:
+  counting_method: full_country_participation
+  include_xpac: false
+  coverage_floor_ratio: 0.10
+
+scaling:
+  years: [2000, 2004]
+  center: median
+  scale: mad_1_4826
+  fallback: iqr_div_1_349
+  regression_percentiles: [1, 99]
+
+gad:
+  start_year: 1997
+  implicit_prior_debt: 0.0
+  warmup_observations: 3
+  half_lives: [3, 5, 8, 10]
+  variants: [gad_core, gad_lite, gad_no_gfvad, gad_no_supp, gad_no_gsci, gad_no_decay, gad_static]
+
+tiva:
+  confirmatory_activities: [C20, C22, C23, C241_2431, C242_2432, C25, C26, C27, C28, C29, C301, C302T309, C31T33, D, E, F]
+  broad_additions: [B07, M]
+  equipment_only_removals: [C31T33, D, E, F]
+  weight_years: [2000, 2004]
+
+sample:
+  minimum_population: 1000000
+  minimum_valid_main_years: 12
+  minimum_positive_import_baseline_years: 2
+
+iv:
+  baseline_years: [1996, 1999]
+  minimum_cell_share: 0.0001
+  robustness_cell_share: 0.0005
+  minimum_retained_coverage: 0.95
+  cmz_lags: 5

@@ -1,0 +1,23 @@
+{
+  "table_id": "gsci_raw",
+  "schema_version": "1.0.0",
+  "primary_key": ["economy_id", "year"],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "gsci_raw": "Float64",
+    "gsci_raw_reason": "String"
+  },
+  "units": {
+    "gsci_raw": "ln_one_plus_decayed_green_works_per_current_year_million_persons"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "gsci_raw": "zero_is_valid_only_for_a_complete_normal_research_window_with_zero_green_works"
+  },
+  "transformations": [
+    "requires_five_consecutive_normal_green_works_observations_t_through_t_minus_four",
+    "uses_population_at_t_only_as_the_denominator_for_the_entire_decayed_stock",
+    "preserves_missing_reason_codes_without_standardization_or_winsorization"
+  ]
+}

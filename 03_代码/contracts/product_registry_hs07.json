@@ -1,0 +1,28 @@
+{
+  "table_id": "product_registry_hs07_v1",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "hs07",
+    "list_name"
+  ],
+  "columns": {
+    "hs07": "String",
+    "list_name": "String",
+    "category": "String",
+    "product_description": "String",
+    "source_hs_revision": "String",
+    "source_id": "String",
+    "source_sha256": "String",
+    "source_location": "String",
+    "extraction_rule_id": "String",
+    "review_status": "String"
+  },
+  "units": {},
+  "zero_semantics": {},
+  "transformations": [
+    "extract_only_cleg_annex_printed_pages_51_57",
+    "anchor_exact_six_digit_hs2007_and_cleg_category",
+    "define_main_as_rep_hem_cre_and_broad_as_all_cleg",
+    "drop_apec_repeated_header_and_apply_declared_hs_revision_fallback"
+  ]
+}

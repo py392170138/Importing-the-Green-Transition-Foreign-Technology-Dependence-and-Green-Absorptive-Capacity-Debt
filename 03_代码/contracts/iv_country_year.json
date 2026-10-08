@@ -1,0 +1,61 @@
+{
+  "table_id": "iv_country_year",
+  "schema_version": "1.0.0",
+  "primary_key": ["taxonomy_version", "share_version", "importer", "year", "gad_version"],
+  "columns": {
+    "taxonomy_version": "String",
+    "share_version": "String",
+    "importer": "String",
+    "year": "Int16",
+    "gad_version": "String",
+    "retained_cell_count": "UInt32",
+    "observed_shock_count": "UInt32",
+    "observed_baseline_share": "Float64",
+    "baseline_confirmatory_eligible": "Boolean",
+    "z": "Float64",
+    "z_missing_reason": "String",
+    "confirmatory_iv_eligible": "Boolean",
+    "gad_time": "Int16",
+    "gad_lag": "Float64",
+    "z_gad": "Float64",
+    "z_gad_missing_reason": "String",
+    "cmz": "Float64",
+    "cmz_complete_terms": "UInt8",
+    "absorption_latest_time": "Int16",
+    "cmz_missing_reason": "String"
+  },
+  "units": {
+    "observed_baseline_share": "fraction_of_fixed_retained_weight_with_observed_shock",
+    "z": "fixed_share_weighted_partner_shock",
+    "gad_lag": "nonnegative_frozen_robust_z_score_debt",
+    "z_gad": "fixed_share_shock_times_lagged_gad",
+    "cmz": "five_term_rho_decayed_shock_times_one_minus_lagged_absorption_midrank",
+    "cmz_complete_terms": "count_of_required_terms"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "z": "complete_fixed_share_contributions_sum_exactly_to_zero",
+    "z_gad": "complete_z_or_lagged_gad_is_exactly_zero",
+    "cmz": "five_complete_weighted_terms_sum_exactly_to_zero",
+    "cmz_complete_terms": "zero_when_no_required_term_is_available"
+  },
+  "null_semantics": {
+    "z": "null_if_and_only_if_any_fixed_retained_baseline_cell_lacks_a_current_partner_shock",
+    "z_missing_reason": "non_null_if_and_only_if_z_is_null; allowed_reason_is_retained_shock_missing",
+    "gad_time": "null_if_and_only_if_no_authoritative_gad_row_exists_at_year_minus_one_for_the_version",
+    "gad_lag": "null_if_the_authoritative_versioned_gad_value_at_year_minus_one_is_missing_or_its_row_is_absent",
+    "z_gad": "null_if_and_only_if_z_or_gad_lag_is_null",
+    "z_gad_missing_reason": "non_null_if_and_only_if_z_gad_is_null; z_missing_takes_precedence_over_lagged_gad_missing",
+    "cmz": "null_if_and_only_if_fewer_than_five_independently_reconstructable_z_times_one_minus_lagged_absorption_rank_terms_exist",
+    "cmz_missing_reason": "non_null_if_and_only_if_cmz_is_null; allowed_reason_is_fewer_than_five_complete_terms"
+  },
+  "transformations": [
+    "sum_all_fixed_retained_contributions_without_time_renormalization",
+    "missing_retained_shock_makes_z_missing_and_row_nonconfirmatory",
+    "interact_z_with_strictly_lagged_gad_for_every_frozen_mapped_version",
+    "retain_gad_version_in_primary_key",
+    "rank_lagged_absorption_by_year_and_eligible_version_frame",
+    "require_all_five_cmz_terms",
+    "no_outcome_value_input"
+  ]
+}

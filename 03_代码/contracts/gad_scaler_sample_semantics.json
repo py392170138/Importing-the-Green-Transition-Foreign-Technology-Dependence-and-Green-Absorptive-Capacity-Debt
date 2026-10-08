@@ -1,0 +1,71 @@
+{
+  "approved_manifest_sha256": "9ba07964040ca5655eabe4080024dfa2b8faf870ecc65bb9235964f9edf3af47",
+  "manifest_semantics": {
+    "column_order": [
+      "economy_id",
+      "sample_version",
+      "economy_rule_eligible",
+      "population_2000",
+      "population_at_least_1m",
+      "wdi_available",
+      "baci_available",
+      "openalex_available",
+      "required_sources_available",
+      "tiva_member",
+      "positive_green_import_baseline_years",
+      "positive_green_import_baseline_eligible",
+      "provisional_core",
+      "exclusion_reason"
+    ],
+    "columns": {
+      "baci_available": "Boolean",
+      "economy_id": "String",
+      "economy_rule_eligible": "Boolean",
+      "exclusion_reason": "String",
+      "openalex_available": "Boolean",
+      "population_2000": "Float64",
+      "population_at_least_1m": "Boolean",
+      "positive_green_import_baseline_eligible": "Boolean",
+      "positive_green_import_baseline_years": "UInt8",
+      "provisional_core": "Boolean",
+      "required_sources_available": "Boolean",
+      "sample_version": "String",
+      "tiva_member": "Boolean",
+      "wdi_available": "Boolean"
+    },
+    "coverage": {
+      "economy_id": {
+        "max": "ZWE",
+        "min": "ABW",
+        "unique": 251
+      }
+    },
+    "duplicate_primary_keys": 0,
+    "null_semantics": {},
+    "output_sha256": "985876481b9cdad18a4a105cf323b7087b2f195f82c1888e85fdf246a3fda645",
+    "period": null,
+    "primary_key": [
+      "economy_id"
+    ],
+    "rows": 251,
+    "schema_sha256": "6bb06dbdaf1dcbc1da97570b517e57cc6a9ca405a3bdea975edad4666bd0cb9f",
+    "table_id": "provisional_sample",
+    "transformations": [
+      "build_from_source_availability_economy_rules_TiVA_membership_population_and_baseline_green_imports_only",
+      "never_read_or_join_an_outcome_table",
+      "require_population_2000_at_least_one_million",
+      "require_at_least_two_positive_green_import_years_in_1996_1999",
+      "apply_one_ordered_first_exclusion_reason",
+      "write_a_sample_flow_identity_for_every_rule"
+    ],
+    "units": {
+      "population_2000": "persons",
+      "positive_green_import_baseline_years": "years_out_of_1996_1999"
+    },
+    "zero_semantics": {
+      "population_2000": "reported_zero_is_retained_but_fails_the_population_rule",
+      "positive_green_import_baseline_years": "zero_means_no_positive_weighted_green_import_year_in_1996_1999"
+    }
+  },
+  "schema_version": "1.0.0"
+}

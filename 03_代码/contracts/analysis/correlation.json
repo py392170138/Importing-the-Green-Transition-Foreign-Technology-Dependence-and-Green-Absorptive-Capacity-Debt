@@ -1,0 +1,34 @@
+{
+  "table_id": "correlation",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "gad_version", "sample_version", "variable_x", "variable_y"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "created_at_utc": "String",
+    "gad_version": "String",
+    "sample_version": "String",
+    "variable_x": "String",
+    "variable_y": "String",
+    "n": "UInt32",
+    "correlation": "Float64"
+  },
+  "units": {
+    "n": "pairwise_complete_replication_safe_state_rows",
+    "correlation": "pearson_correlation"
+  },
+  "period": null,
+  "zero_semantics": {
+    "correlation": "valid_exact_zero_linear_correlation"
+  },
+  "null_semantics": {
+    "correlation": "null_when_fewer_than_two_pairwise_rows_or_either_variable_has_zero_variance"
+  },
+  "transformations": [
+    "deduplicate_state_rows_before_pairwise_complete_pearson_correlations",
+    "store_the_full_ordered_correlation_matrix"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "table_id": "baci_green_bilateral",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "taxonomy_version",
+    "year",
+    "exporter_id",
+    "importer_id",
+    "hs6"
+  ],
+  "columns": {
+    "taxonomy_version": "String",
+    "year": "Int16",
+    "exporter_id": "String",
+    "importer_id": "String",
+    "hs6": "String",
+    "trade_value_usd": "Float64",
+    "quantity_tonnes": "Float64",
+    "quantity_observation_count": "UInt64",
+    "green_weight": "Float64",
+    "weighted_green_trade_usd": "Float64",
+    "source_row_count": "UInt64"
+  },
+  "units": {
+    "trade_value_usd": "current_USD",
+    "quantity_tonnes": "metric_tonnes",
+    "quantity_observation_count": "source_rows_with_reported_quantity",
+    "green_weight": "fraction",
+    "weighted_green_trade_usd": "current_USD",
+    "source_row_count": "source_rows"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "trade_value_usd": "reported_BACI_zero_is_retained",
+    "quantity_tonnes": "reported_BACI_zero_is_retained_and_null_means_no_reported_quantity",
+    "weighted_green_trade_usd": "reported_zero_or_zero_weight_is_retained",
+    "source_row_count": "zero_only_for_an_empty_authoritative_partition"
+  },
+  "transformations": [
+    "stream_zip_member_without_extraction",
+    "convert_BACI_value_from_thousand_USD_to_current_USD",
+    "retain_quantity_in_metric_tonnes",
+    "map_both_partners_through_frozen_economy_crosswalk",
+    "apply_frozen_taxonomy_weight_after_source_validation"
+  ]
+}

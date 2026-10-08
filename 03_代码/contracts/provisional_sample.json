@@ -1,0 +1,40 @@
+{
+  "table_id": "provisional_sample",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "economy_id"
+  ],
+  "columns": {
+    "economy_id": "String",
+    "sample_version": "String",
+    "economy_rule_eligible": "Boolean",
+    "population_2000": "Float64",
+    "population_at_least_1m": "Boolean",
+    "wdi_available": "Boolean",
+    "baci_available": "Boolean",
+    "openalex_available": "Boolean",
+    "required_sources_available": "Boolean",
+    "tiva_member": "Boolean",
+    "positive_green_import_baseline_years": "UInt8",
+    "positive_green_import_baseline_eligible": "Boolean",
+    "provisional_core": "Boolean",
+    "exclusion_reason": "String"
+  },
+  "units": {
+    "population_2000": "persons",
+    "positive_green_import_baseline_years": "years_out_of_1996_1999"
+  },
+  "period": null,
+  "zero_semantics": {
+    "population_2000": "reported_zero_is_retained_but_fails_the_population_rule",
+    "positive_green_import_baseline_years": "zero_means_no_positive_weighted_green_import_year_in_1996_1999"
+  },
+  "transformations": [
+    "build_from_source_availability_economy_rules_TiVA_membership_population_and_baseline_green_imports_only",
+    "never_read_or_join_an_outcome_table",
+    "require_population_2000_at_least_one_million",
+    "require_at_least_two_positive_green_import_years_in_1996_1999",
+    "apply_one_ordered_first_exclusion_reason",
+    "write_a_sample_flow_identity_for_every_rule"
+  ]
+}

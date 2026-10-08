@@ -1,0 +1,27 @@
+source_id,source_code,source_label,economy_id,confirmatory_eligible,exclusion_reason,reexport_hub,review_status,notes
+baci,490,"Asia, nes",,false,asia_nes,false,reviewed,retain only in raw mapping audit
+baci,999,World,,false,aggregate_or_row,false,reviewed,aggregate excluded from analytical tables
+baci,200,Czechoslovakia,CSK,true,,false,reviewed,historical statistical entity retained under its source code
+baci,278,Democratic Republic of Germany,DDR,true,,false,reviewed,historical statistical entity retained under its source code
+baci,530,Netherlands Antilles,ANT,true,,false,reviewed,historical statistical entity retained under its source code
+baci,697,"Europe EFTA, nes",,false,aggregate_or_row,false,reviewed,regional residual excluded
+baci,711,Southern African Customs Union,,false,aggregate_or_row,false,reviewed,customs-union aggregate excluded
+baci,810,USSR,SUN,true,,false,reviewed,historical statistical entity retained under its source code
+baci,849,US Miscellaneous Pacific Islands,,false,aggregate_or_row,false,reviewed,territorial aggregate excluded
+baci,891,Serbia and Montenegro,SCG,true,,false,reviewed,historical statistical entity retained under its source code
+wdi,CHI,Channel Islands,,false,aggregate_or_row,false,reviewed,World Bank territorial aggregate excluded
+wdi,XKX,Kosovo,XKX,true,,false,reviewed,non-ISO statistical code retained
+openalex,XK,Kosovo,XKX,true,,false,reviewed,OpenAlex ISO-like Kosovo code
+irena,XKX,Kosovo,XKX,true,,false,reviewed,non-ISO statistical code retained
+irena,REA,Eurasia,,false,aggregate_or_row,false,reviewed,regional aggregate excluded
+irena,OCA,Oceania,,false,aggregate_or_row,false,reviewed,regional aggregate excluded
+ilostat,KOS,Kosovo,XKX,true,,false,reviewed,ILOSTAT Kosovo statistical code
+ilostat,ANT,Netherlands Antilles,ANT,true,,false,reviewed,historical statistical entity retained under its source code
+ilostat,CHA,Channel Islands,,false,aggregate_or_row,false,reviewed,territorial aggregate excluded
+oecd_tiva,ROW,Rest of world,,false,aggregate_or_row,false,reviewed,OECD aggregate counterpart or area
+openalex,TW,Taiwan,TWN,false,taiwan_confirmatory_exclusion,false,reviewed,retain in Taiwan robustness frame
+irena,TWN,Chinese Taipei,TWN,false,taiwan_confirmatory_exclusion,false,reviewed,retain in Taiwan robustness frame
+oecd_tiva,TWN,Chinese Taipei,TWN,false,taiwan_confirmatory_exclusion,false,reviewed,retain in Taiwan robustness frame
+canonical,HKG,Hong Kong SAR China,HKG,true,,true,reviewed,known re-export hub retained
+canonical,SGP,Singapore,SGP,true,,true,reviewed,known re-export hub retained
+canonical,NLD,Netherlands,NLD,true,,true,reviewed,known re-export hub retained

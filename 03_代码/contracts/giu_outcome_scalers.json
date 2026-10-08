@@ -1,0 +1,32 @@
+{
+  "table_id": "giu_outcome_scalers",
+  "schema_version": "1.0.0",
+  "primary_key": ["horizon", "source_column"],
+  "columns": {
+    "horizon": "Int16",
+    "source_column": "String",
+    "fit_start_year": "Int16",
+    "fit_end_year": "Int16",
+    "center": "Float64",
+    "scale": "Float64",
+    "scale_method": "String",
+    "row_count": "UInt32",
+    "economy_count": "UInt32",
+    "canonical_hash": "String"
+  },
+  "units": {
+    "horizon": "years_after_treatment",
+    "fit_start_year": "treatment_calendar_year",
+    "fit_end_year": "treatment_calendar_year",
+    "center": "component_specific_unit",
+    "scale": "component_specific_unit"
+  },
+  "period": null,
+  "zero_semantics": {},
+  "transformations": [
+    "fit_separately_for_each_industrial_horizon_on_provisional_core_treatment_years_2000_2004",
+    "require_all_three_components_when_forming_the_equal_weighted_GIU_index",
+    "orient_higher_values_as_upgrading",
+    "hash_independently_from_the_GAD_scaler_and_regression_bounds"
+  ]
+}

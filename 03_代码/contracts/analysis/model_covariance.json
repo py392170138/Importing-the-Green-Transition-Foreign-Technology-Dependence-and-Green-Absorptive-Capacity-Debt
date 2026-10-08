@@ -1,0 +1,47 @@
+{
+  "table_id": "model_covariance",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "estimator", "analysis_family", "outcome_id", "horizon", "gad_version", "sample_version", "term_i", "term_j"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "evidence_policy_sha256": "String",
+    "created_at_utc": "String",
+    "year_min": "Int16",
+    "year_max": "Int16",
+    "r_version": "String",
+    "python_version": "String",
+    "julia_version": "String",
+    "package_versions_json": "String",
+    "random_seed": "UInt64",
+    "ssc_config": "String",
+    "reference_distribution": "String",
+    "reference_df": "Float64",
+    "clusters": "UInt16",
+    "estimator": "String",
+    "analysis_family": "String",
+    "outcome_id": "String",
+    "horizon": "Int16",
+    "gad_version": "String",
+    "sample_version": "String",
+    "term_i": "String",
+    "term_j": "String",
+    "covariance": "Float64"
+  },
+  "units": {
+    "horizon": "years_after_treatment",
+    "covariance": "squared_outcome_units_per_frozen_regressor_units"
+  },
+  "period": null,
+  "zero_semantics": {
+    "covariance": "valid_exact_zero_covariance"
+  },
+  "null_semantics": {},
+  "transformations": [
+    "ordered_two_by_two_covariance_for_gimc_and_gimc_times_gad",
+    "covariance_is_symmetric_and_positive_semidefinite_with_tolerance_1e_10"
+  ]
+}

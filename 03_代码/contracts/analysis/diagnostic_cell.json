@@ -1,0 +1,65 @@
+{
+  "table_id": "diagnostic_cell",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "analysis_family", "outcome_id", "horizon", "gad_version", "sample_version"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "created_at_utc": "String",
+    "analysis_family": "String",
+    "outcome_id": "String",
+    "horizon": "Int16",
+    "gad_version": "String",
+    "sample_version": "String",
+    "role": "String",
+    "n": "UInt32",
+    "economies": "UInt16",
+    "clusters": "UInt16",
+    "year_min": "Int16",
+    "year_max": "Int16",
+    "instrument_rank": "UInt8",
+    "cross_moment_rank": "UInt8",
+    "rank": "UInt8",
+    "condition_number": "Float64",
+    "partial_r2_gimc": "Float64",
+    "partial_r2_interaction": "Float64",
+    "effective_f_gimc": "Float64",
+    "effective_f_interaction": "Float64",
+    "first_stage_status": "String",
+    "gate_status": "String"
+  },
+  "units": {
+    "horizon": "years_after_treatment",
+    "year_min": "calendar_year",
+    "year_max": "calendar_year",
+    "condition_number": "dimensionless",
+    "partial_r2_gimc": "fraction",
+    "partial_r2_interaction": "fraction",
+    "effective_f_gimc": "cluster_robust_wald_per_excluded_instrument",
+    "effective_f_interaction": "cluster_robust_wald_per_excluded_instrument"
+  },
+  "period": null,
+  "zero_semantics": {
+    "n": "zero_only_when_the_registered_cell_has_no_exact_model_sample",
+    "economies": "zero_only_when_n_is_zero",
+    "clusters": "zero_only_when_n_is_zero",
+    "rank": "zero_when_no_excluded_instrument_dimension_is_identified"
+  },
+  "null_semantics": {
+    "year_min": "null_exactly_when_n_is_zero",
+    "year_max": "null_exactly_when_n_is_zero",
+    "condition_number": "null_when_the_residualized_instrument_system_is_not_estimable",
+    "partial_r2_gimc": "null_when_the_gimc_first_stage_is_not_estimable",
+    "partial_r2_interaction": "null_when_the_interaction_first_stage_is_not_estimable",
+    "effective_f_gimc": "null_when_the_gimc_cluster_robust_wald_test_is_not_estimable",
+    "effective_f_interaction": "null_when_the_interaction_cluster_robust_wald_test_is_not_estimable"
+  },
+  "transformations": [
+    "one_row_for_each_of_the_85_registered_analysis_cells",
+    "residualize_endogenous_terms_and_excluded_instruments_against_frozen_controls_and_two_way_fixed_effects",
+    "retain_weak_first_stages_and_fail_closed_only_for_rank_or_sample_gates"
+  ]
+}

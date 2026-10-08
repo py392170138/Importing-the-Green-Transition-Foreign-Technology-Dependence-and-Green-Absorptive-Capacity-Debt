@@ -1,0 +1,34 @@
+{
+  "table_id": "irena_country_year",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "economy_id",
+    "year",
+    "indicator_id"
+  ],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "indicator_id": "String",
+    "value": "Float64",
+    "unit": "String",
+    "source_update": "String",
+    "source_status": "String",
+    "retirement_or_revision": "Boolean"
+  },
+  "units": {
+    "value": "indicator_specific_frozen_unit"
+  },
+  "period": [2000, 2025],
+  "zero_semantics": {
+    "value": "reported_zero_is_retained_source_null_remains_null_and_negative_additions_are_retained"
+  },
+  "transformations": [
+    "decode_JSON_stat2_by_named_dimension_and_category_index",
+    "capacity_equals_total_renewable_OnGrid_plus_OffGrid_only",
+    "generation_uses_total_renewable_All_only",
+    "capacity_additions_require_sorted_consecutive_years",
+    "negative_capacity_additions_flag_retirement_or_revision",
+    "exclude_regional_aggregates_through_frozen_crosswalk"
+  ]
+}

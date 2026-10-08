@@ -1,0 +1,35 @@
+{
+  "table_id": "exposure_concentration",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "importer"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "created_at_utc": "String",
+    "taxonomy_version": "String",
+    "share_version": "String",
+    "importer": "String",
+    "exposure_units": "UInt32",
+    "hhi": "Float64",
+    "effective_units": "Float64",
+    "top1_share": "Float64",
+    "top5_share": "Float64"
+  },
+  "units": {
+    "exposure_units": "retained_exporter_product_units",
+    "hhi": "sum_of_squared_baseline_shares",
+    "effective_units": "inverse_hhi",
+    "top1_share": "fraction",
+    "top5_share": "fraction"
+  },
+  "period": null,
+  "zero_semantics": {},
+  "null_semantics": {},
+  "transformations": [
+    "use_only_main_hs96_main_0_0001_retained_and_renormalized_baseline_shares",
+    "compute_importer_level_hhi_inverse_hhi_top1_and_top5"
+  ]
+}

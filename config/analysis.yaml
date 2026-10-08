@@ -1,0 +1,101 @@
+schema_version: 1
+spec_id: gad_lp_iv_v1
+seed: 20260820
+period: [2000, 2022]
+sample_version: core_complete_case
+columns:
+  outcome: delta_outcome
+  treatment: gimc_p01_p99
+  gad: gad_lag_p01_p99
+  instrument: Z_p01_p99
+  interaction_instrument: Z_GAD_p01_p99
+  controls:
+    - renewable_energy_consumption_share_analysis_p01_p99
+    - trade_openness_percent_gdp_analysis_p01_p99
+    - industry_value_added_share_analysis_p01_p99
+    - gdp_per_capita_current_usd_analysis_p01_p99
+fixed_effects: [economy_id, treatment_time]
+cluster: economy_id
+outcomes:
+  - outcome_id: co2_tonnes_per_million_current_usd
+    horizons: [1, 2, 3]
+    gad_version: gad_core
+    role: h1_primary
+    target_term: gimc_a
+    expected_sign: negative
+  - outcome_id: renewable_capacity_additions_mw_per_million
+    horizons: [1, 2, 3]
+    gad_version: gad_core
+    role: h1_deployment
+    target_term: gimc_a
+    expected_sign: positive
+  - outcome_id: energy_intensity_mj_per_ppp_gdp
+    horizons: [1, 2, 3]
+    gad_version: gad_core
+    role: h1_secondary
+    target_term: gimc_a
+    expected_sign: negative
+  - outcome_id: future_green_rca_entry_rate
+    horizons: [3, 4, 5, 6, 7, 8]
+    gad_version: gad_no_supp
+    role: industrial
+    target_term: gimc_gad_a
+    expected_sign: negative
+  - outcome_id: green_export_complexity
+    horizons: [3, 4, 5, 6, 7, 8]
+    gad_version: gad_no_supp
+    role: h2_h3_primary
+    target_term: gimc_gad_a
+    expected_sign: negative
+  - outcome_id: green_export_share
+    horizons: [3, 4, 5, 6, 7, 8]
+    gad_version: gad_no_supp
+    role: industrial
+    target_term: gimc_gad_a
+    expected_sign: negative
+  - outcome_id: domestic_value_added_share
+    horizons: [3, 4, 5, 6, 7, 8]
+    gad_version: gad_no_gfvad
+    role: h3_primary
+    target_term: gimc_gad_a
+    expected_sign: negative
+  - outcome_id: foreign_value_added_dependence
+    horizons: [3, 4, 5, 6, 7, 8]
+    gad_version: gad_no_gfvad
+    role: dependence
+    target_term: gimc_gad_a
+    expected_sign: positive
+robustness:
+  - robustness_id: bounded_controls
+    sample_version: core_bounded_controls
+threshold:
+  outcome_id: green_industrial_upgrading_index
+  horizon: 5
+  gad_version: gad_no_supp
+  sample_version: core_complete_case
+  percentiles: [20, 80]
+  minimum_regime_share: 0.20
+  criterion: minimum_two_way_fe_ssr
+  quantile_type: 7
+  tie_break: lowest_percentile_then_lowest_q
+vulnerability:
+  sample_version: core_complete_case_negative_shock
+  outcomes:
+    - outcome_id: asinh_weighted_green_imports
+      horizons: [1, 2, 3]
+      gad_version: gad_core
+    - outcome_id: renewable_capacity_additions_mw_per_million
+      horizons: [1, 2, 3]
+      gad_version: gad_core
+inference:
+  exploratory_below_clusters: 20
+  wild_bootstrap_below_clusters: 30
+  wild_bootstrap_draws: 9999
+  weak_f_reference: 10.0
+  marginal_gad_quantiles: [0.25, 0.50, 0.75]
+  ar_grid_points_per_axis: 121
+  ar_initial_se_span: 6
+  ar_max_expansions: 4
+outputs:
+  root: 06_结果/analysis
+  quota_gb: 10

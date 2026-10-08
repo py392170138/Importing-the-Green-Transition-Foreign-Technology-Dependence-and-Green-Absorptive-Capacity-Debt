@@ -1,0 +1,40 @@
+#!/bin/sh
+set -eu
+
+PROJECT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
+PYTHON="$PROJECT_DIR/.venv/bin/python"
+DATA_ROOT=""
+OUTPUT_ROOT="$PROJECT_DIR/06_结果/analysis"
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --data-root)
+      [ "$#" -ge 2 ] || {
+        printf '%s\n' 'missing --data-root value' >&2
+        exit 2
+      }
+      DATA_ROOT=$2
+      shift 2
+      ;;
+    --output-root)
+      [ "$#" -ge 2 ] || {
+        printf '%s\n' 'missing --output-root value' >&2
+        exit 2
+      }
+      OUTPUT_ROOT=$2
+      shift 2
+      ;;
+    *)
+      printf '%s\n' "unknown argument: $1" >&2
+      exit 2
+      ;;
+  esac
+done
+
+[ -n "$DATA_ROOT" ] || {
+  printf '%s\n' '--data-root is required' >&2
+  exit 2
+}
+
+exec "$PYTHON" -m green_debt.cli analysis-run \
+  --data-root "$DATA_ROOT" --output-root "$OUTPUT_ROOT"

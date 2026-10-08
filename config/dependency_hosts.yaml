@@ -1,0 +1,4 @@
+allowed_hosts:
+  - api.github.com
+  - cloud.r-project.org
+  - codeload.github.com

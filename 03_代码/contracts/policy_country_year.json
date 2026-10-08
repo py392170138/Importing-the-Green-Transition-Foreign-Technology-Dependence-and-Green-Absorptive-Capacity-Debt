@@ -1,0 +1,33 @@
+{
+  "table_id": "policy_country_year",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "economy_id",
+    "year",
+    "indicator_id"
+  ],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "indicator_id": "String",
+    "value": "Float64",
+    "unit": "String",
+    "source_status": "String",
+    "robustness_only": "Boolean"
+  },
+  "units": {
+    "value": "indicator_specific_index_or_count"
+  },
+  "period": [1990, 2026],
+  "zero_semantics": {
+    "value": "reported_EPS_zero_and_observed_no_instrument_snapshot_zero_are_retained"
+  },
+  "transformations": [
+    "require_EPS_annual_POL_STRINGENCY_unit_multiplier_zero_and_0_TO_6_unit",
+    "deduplicate_IFCMA_by_country_policy_instrument_ID_and_instrument_subscheme",
+    "exclude_and_report_IFCMA_rows_with_missing_instrument_identity",
+    "report_IFCMA_as_a_2026_snapshot_without_backcasting_missing_dates",
+    "mark_every_policy_observation_robustness_only_true",
+    "never_use_policy_availability_to_define_the_main_sample"
+  ]
+}

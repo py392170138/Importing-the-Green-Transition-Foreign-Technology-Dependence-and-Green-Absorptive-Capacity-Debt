@@ -1,0 +1,55 @@
+{
+  "table_id": "distribution",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "gad_version", "sample_version", "variable"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "created_at_utc": "String",
+    "gad_version": "String",
+    "sample_version": "String",
+    "variable": "String",
+    "n": "UInt32",
+    "mean": "Float64",
+    "std": "Float64",
+    "min": "Float64",
+    "p01": "Float64",
+    "p25": "Float64",
+    "p50": "Float64",
+    "p75": "Float64",
+    "p99": "Float64",
+    "max": "Float64"
+  },
+  "units": {
+    "n": "replication_safe_state_rows",
+    "mean": "variable_units",
+    "std": "variable_units",
+    "min": "variable_units",
+    "p01": "variable_units",
+    "p25": "variable_units",
+    "p50": "variable_units",
+    "p75": "variable_units",
+    "p99": "variable_units",
+    "max": "variable_units"
+  },
+  "period": null,
+  "zero_semantics": {
+    "mean": "valid_exact_zero",
+    "std": "valid_exact_zero_for_a_constant_variable",
+    "min": "valid_exact_zero",
+    "p01": "valid_exact_zero",
+    "p25": "valid_exact_zero",
+    "p50": "valid_exact_zero",
+    "p75": "valid_exact_zero",
+    "p99": "valid_exact_zero",
+    "max": "valid_exact_zero"
+  },
+  "null_semantics": {},
+  "transformations": [
+    "deduplicate_by_economy_treatment_year_gad_version_and_sample_version_before_summarizing",
+    "use_linear_type_7_quantiles"
+  ]
+}

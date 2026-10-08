@@ -1,0 +1,14 @@
+schema_version: 1
+outcomes:
+  domestic_value_added_share: gad_no_gfvad
+  foreign_value_added_dependence: gad_no_gfvad
+  green_export_complexity: gad_no_supp
+  green_export_share: gad_no_supp
+  future_green_rca_entry_rate: gad_no_supp
+  green_industrial_upgrading_index: gad_no_supp
+  supplier_deepening: gad_no_supp
+  green_science_output: gad_no_gsci
+  renewable_capacity_additions_mw_per_million: gad_core
+  co2_tonnes_per_million_current_usd: gad_core
+  energy_intensity_mj_per_ppp_gdp: gad_core
+  asinh_weighted_green_imports: gad_core

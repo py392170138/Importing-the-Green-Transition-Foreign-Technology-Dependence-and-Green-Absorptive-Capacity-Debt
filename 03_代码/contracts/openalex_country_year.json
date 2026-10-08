@@ -1,0 +1,38 @@
+{
+  "table_id": "openalex_country_year",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "economy_id",
+    "year"
+  ],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "green_works": "UInt64",
+    "total_works": "UInt64",
+    "green_total_matching_works": "UInt64",
+    "total_all_matching_works": "UInt64",
+    "counting_method": "String",
+    "include_xpac": "Boolean",
+    "source_status": "String"
+  },
+  "units": {
+    "green_works": "full_country_participation_count",
+    "total_works": "full_country_participation_count",
+    "green_total_matching_works": "global_work_count",
+    "total_all_matching_works": "global_work_count"
+  },
+  "period": [1992, 2024],
+  "zero_semantics": {
+    "green_works": "reported_zero_is_retained_subject_to_later_total_research_coverage_audit",
+    "total_works": "zero_is_abnormal_coverage_and_is_not_imputed"
+  },
+  "transformations": [
+    "union_only_the_frozen_1992_1995_and_1996_2024_aggregate_files",
+    "require_full_country_participation",
+    "require_include_xpac_false",
+    "require_dataset_level_year_coverage_1992_2024",
+    "do_not_fill_individual_economy_year_gaps",
+    "exclude_non_economies_through_frozen_crosswalk"
+  ]
+}

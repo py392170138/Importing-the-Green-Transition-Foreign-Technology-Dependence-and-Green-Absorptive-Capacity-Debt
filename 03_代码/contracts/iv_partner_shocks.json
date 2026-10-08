@@ -1,0 +1,62 @@
+{
+  "table_id": "iv_partner_shocks",
+  "schema_version": "1.0.0",
+  "primary_key": ["taxonomy_version", "share_version", "importer", "exporter", "hs6", "year"],
+  "columns": {
+    "taxonomy_version": "String",
+    "share_version": "String",
+    "importer": "String",
+    "destination_excluded": "String",
+    "exporter": "String",
+    "hs6": "String",
+    "year": "Int16",
+    "baseline_share": "Float64",
+    "exports_excluding_destination_lag": "Float64",
+    "exports_excluding_destination": "Float64",
+    "global_product_exports_excluding_destination_lag": "Float64",
+    "global_product_exports_excluding_destination": "Float64",
+    "exporter_growth_excluding_destination": "Float64",
+    "global_product_growth_excluding_destination": "Float64",
+    "partner_shock": "Float64",
+    "shock_missing_reason": "String",
+    "contribution": "Float64",
+    "contribution_missing_reason": "String"
+  },
+  "units": {
+    "baseline_share": "fixed_1996_1999_renormalized_fraction",
+    "exports_excluding_destination_lag": "current_USD",
+    "exports_excluding_destination": "current_USD",
+    "global_product_exports_excluding_destination_lag": "current_USD",
+    "global_product_exports_excluding_destination": "current_USD",
+    "exporter_growth_excluding_destination": "bounded_symmetric_growth",
+    "global_product_growth_excluding_destination": "bounded_symmetric_growth",
+    "partner_shock": "bounded_symmetric_growth_difference",
+    "contribution": "fixed_share_times_partner_shock"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "exports_excluding_destination": "observed_zero_after_subtracting_destination_from_verified_annual_total",
+    "global_product_exports_excluding_destination": "observed_zero_after_subtracting_destination_from_verified_annual_product_total",
+    "partner_shock": "exporter_growth_exactly_equals_global_product_growth",
+    "contribution": "fixed_share_times_an_exact_zero_partner_shock"
+  },
+  "null_semantics": {
+    "exports_excluding_destination_lag": "null_if_and_only_if_the_immediately_prior_verified_annual_partition_is_outside_the_source_period",
+    "global_product_exports_excluding_destination_lag": "null_if_and_only_if_the_immediately_prior_verified_annual_partition_is_outside_the_source_period",
+    "exporter_growth_excluding_destination": "null_if_prior_level_is_unavailable_or_both_adjacent_exporter_levels_are_zero",
+    "global_product_growth_excluding_destination": "null_if_prior_level_is_unavailable_or_both_adjacent_global_product_levels_are_zero",
+    "partner_shock": "null_if_and_only_if_either_required_symmetric_growth_is_null",
+    "shock_missing_reason": "non_null_if_and_only_if_partner_shock_is_null; allowed_reasons_are_prior_year_not_available_both_adjacent_exporter_levels_zero_both_adjacent_global_product_levels_zero",
+    "contribution": "null_if_and_only_if_partner_shock_is_null; never_reweight_the_fixed_baseline_share",
+    "contribution_missing_reason": "non_null_if_and_only_if_contribution_is_null_and_must_equal_shock_missing_reason"
+  },
+  "transformations": [
+    "restrict_to_fixed_retained_baseline_cells",
+    "subtract_receiving_destination_before_growth",
+    "construct_sparse_absence_as_zero_only_with_verified_annual_partition_and_mapped_keys",
+    "both_adjacent_zero_levels_are_missing",
+    "subtract_leave_destination_out_global_product_growth",
+    "never_renormalize_weights_around_missing_shocks",
+    "no_current_share_future_shock_or_outcome_input"
+  ]
+}

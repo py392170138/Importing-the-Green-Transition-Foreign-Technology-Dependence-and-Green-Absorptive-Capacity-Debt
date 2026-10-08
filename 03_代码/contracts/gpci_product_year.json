@@ -1,0 +1,35 @@
+{
+  "table_id": "gpci_product_year",
+  "schema_version": "1.0.0",
+  "primary_key": ["taxonomy_version", "year", "hs6"],
+  "columns": {
+    "taxonomy_version": "String",
+    "year": "Int16",
+    "hs6": "String",
+    "gpci": "Float64",
+    "orientation_score": "Float64",
+    "network_economies": "UInt32",
+    "network_products": "UInt32",
+    "zero_diversity_economies": "UInt32",
+    "zero_ubiquity_products": "UInt32"
+  },
+  "units": {
+    "gpci": "population_standard_deviations",
+    "orientation_score": "pearson_correlation",
+    "network_economies": "economies",
+    "network_products": "products",
+    "zero_diversity_economies": "economies",
+    "zero_ubiquity_products": "products"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "zero_diversity_economies": "economies_with_no_RCA_at_least_one_product_are_excluded_from_the_annual_network",
+    "zero_ubiquity_products": "products_with_no_RCA_at_least_one_exporter_are_excluded_from_the_annual_network"
+  },
+  "transformations": [
+    "calculate_Balassa_RCA_on_all_HS96_products_before_green_registry_join",
+    "construct_normalized_product_product_spectral_PCI_network_annually",
+    "standardize_PCI_to_population_mean_zero_and_standard_deviation_one",
+    "orient_against_negative_ubiquity_and_exporter_diversity_anchor"
+  ]
+}

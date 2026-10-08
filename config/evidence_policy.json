@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "green_absorptive_debt_evidence_policy_v1",
+  "concentration": {
+    "status": "unresolved_no_preregistered_cutoff",
+    "metrics": {
+      "exposure": ["hhi", "top1_share"],
+      "rotemberg": ["hhi_absolute", "top1_absolute_share"]
+    },
+    "aggregation": "diagnostic_disclosure_only",
+    "cutoffs": {
+      "hhi": null,
+      "top1_share": null
+    },
+    "unresolved_policy": "exploratory"
+  },
+  "conventional_inference": {
+    "confidence_level": 0.95,
+    "ssc_config": "fixest:K.adj=TRUE;K.fixef=nonnested;K.exact=FALSE;G.adj=TRUE;G.df=min;t.df=min",
+    "reference_distribution": "cluster_t",
+    "reference_df_rule": "clusters_minus_one"
+  },
+  "wild_cluster_bootstrap": {
+    "minimum_clusters": 20,
+    "maximum_clusters": 29,
+    "seed": 20260820,
+    "draws": 9999,
+    "unbounded_bounds": null
+  },
+  "software": {
+    "r_version": "4.6.1",
+    "python_version": "3.12.13",
+    "julia_version": "1.12.7",
+    "packages": {
+      "R.arrow": "25.0.1",
+      "R.clubSandwich": "0.7.0",
+      "R.data.table": "1.18.6.1",
+      "R.digest": "0.6.39",
+      "R.dqrng": "0.4.1",
+      "R.fixest": "0.14.2",
+      "R.fwildclusterboot": "0.14.3",
+      "R.ggplot2": "4.0.3",
+      "R.ivreg": "0.6.8",
+      "R.jsonlite": "2.0.0",
+      "R.JuliaConnectoR": "1.1.5",
+      "julia.StableRNGs": "1.0.4",
+      "julia.WildBootTests": "0.9.8",
+      "python.numpy": "2.4.6",
+      "python.polars": "1.42.1",
+      "python.scipy": "1.18.0"
+    }
+  },
+  "threshold_binding": {
+    "registry_hash": "606c77365627c222cef81e1351a5fe24b38128d08d6f082045ebab1e85292d37",
+    "q": 1.4777372886633888,
+    "percentile": 47,
+    "input_authority_hash": "9a79ba80640376369a6f6a3be90918d9b9798e2f6775f67544a288ec16e5032a"
+  }
+}

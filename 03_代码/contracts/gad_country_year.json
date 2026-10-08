@@ -1,0 +1,52 @@
+{
+  "table_id": "gad_country_year",
+  "schema_version": "1.0.0",
+  "primary_key": ["economy_id", "year", "specification_id"],
+  "columns": {
+    "economy_id": "String", "year": "Int16", "specification_id": "String", "formula_id": "String", "family": "String", "half_life": "Int16",
+    "taxonomy_version": "String", "sample_version": "String", "scaler_hash": "String", "gimc": "Float64", "supp": "Float64",
+    "external_exposure": "Float64", "absorption": "Float64", "lagged_absorption": "Float64", "gap": "Float64", "gad": "Float64", "rho": "Float64", "uses_lagged_debt": "Boolean",
+    "run_id": "Int16", "run_position": "Int16", "gap_valid": "Boolean", "warmup_ineligible": "Boolean", "initialization_run": "Boolean",
+    "initialization_complete": "Boolean", "core_economy_eligible": "Boolean", "core_eligibility_reason": "String",
+    "eligible": "Boolean", "confirmatory_eligible": "Boolean", "descriptive_only": "Boolean", "gimc_present": "Boolean", "supp_present": "Boolean",
+    "core_exposure_present": "Boolean", "core_absorption_present": "Boolean", "provisional_core": "Boolean",
+    "positive_green_import_baseline_eligible": "Boolean",
+    "external_exposure_present": "Boolean", "absorption_present": "Boolean",
+    "lagged_absorption_present": "Boolean", "gap_complete": "Boolean"
+  },
+  "units": {
+    "gimc": "frozen_robust_z_score", "supp": "frozen_robust_z_score", "external_exposure": "frozen_robust_z_score",
+    "absorption": "frozen_robust_z_score", "lagged_absorption": "frozen_robust_z_score", "gap": "frozen_robust_z_score",
+    "gad": "nonnegative_frozen_robust_z_score_debt", "rho": "retention_factor", "uses_lagged_debt": "registered_boolean", "half_life": "years",
+    "run_id": "consecutive_valid_gap_run", "run_position": "valid_observations_in_run"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "gad": "zero_is_the_explicit_nonnegative_recursion_floor", "gap": "zero_is_exact_balance_between_exposure_and_lagged_absorption",
+    "run_position": "not_zero_when_a_valid_gap_run_exists"
+  },
+  "null_semantics": {
+    "economy_id": "never_null_primary_key", "year": "never_null_primary_key", "specification_id": "never_null_primary_key",
+    "formula_id": "never_null_registered_formula", "family": "never_null_registered_family", "half_life": "null_only_for_no_decay_or_static",
+    "taxonomy_version": "never_null_registered_taxonomy", "sample_version": "never_null_registered_sample", "scaler_hash": "never_null_frozen_hash",
+    "gimc": "null_when_a_required_import_component_is_missing", "supp": "null_when_GUD_or_GRD_is_missing",
+    "external_exposure": "null_when_the_formula_required_E_components_are_missing", "absorption": "null_when_the_formula_required_A_components_are_missing",
+    "lagged_absorption": "null_in_1996_or_without_the_prior_calendar_year_A", "gap": "null_in_1996_or_when_E_or_lagged_A_is_missing",
+    "gad": "null_exactly_when_gap_is_null", "rho": "never_null_registered_recursion_parameter", "uses_lagged_debt": "never_null_registered_recursion_flag", "run_id": "null_exactly_when_gap_is_null",
+    "run_position": "null_exactly_when_gap_is_null", "gap_valid": "never_null_and_true_exactly_when_gap_is_finite",
+    "warmup_ineligible": "never_null_false_when_gap_is_null", "initialization_run": "never_null_true_only_for_a_1997_started_initial_run",
+    "initialization_complete": "never_null_economy_level_recomputed_from_A1996_and_E1997_1999", "core_economy_eligible": "never_null_economy_level_source_recomputed",
+    "core_eligibility_reason": "never_null_stable_reason_code", "eligible": "never_null_run_maturity_flag",
+    "confirmatory_eligible": "never_null_requires_run_maturity_and_core_eligibility", "descriptive_only": "never_null_true_only_for_Lite_2023_2024",
+    "gimc_present": "never_null_component_presence", "supp_present": "never_null_component_presence", "core_exposure_present": "never_null_component_presence",
+    "core_absorption_present": "never_null_component_presence", "provisional_core": "never_null_source_sample_flag",
+    "positive_green_import_baseline_eligible": "never_null_source_sample_flag", "external_exposure_present": "never_null_formula_specific_presence",
+    "absorption_present": "never_null_formula_specific_presence", "lagged_absorption_present": "never_null_strict_lag_presence",
+    "gap_complete": "never_null_generic_E_and_lagged_A_completeness"
+  },
+  "transformations": [
+    "equal_weighted_GIMC_SUPP_and_formula_specific_E_A", "strict_calendar_lag_of_absorption_only", "rho_equals_two_to_negative_one_over_half_life",
+    "missing_component_or_calendar_gap_resets_debt_run", "first_three_valid_observations_in_each_run_are_warmup_ineligible",
+    "2023_2024_are_descriptive_only_and_lite_only", "one_frozen_scaler_hash_for_all_variants", "no_outcome_input"
+  ]
+}

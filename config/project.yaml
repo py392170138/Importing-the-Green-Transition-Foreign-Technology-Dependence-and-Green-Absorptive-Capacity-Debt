@@ -1,0 +1,41 @@
+period:
+  openalex_history: [1992, 1995]
+  source_trade: [1996, 2024]
+  tiva_history: [1995, 1999]
+  initialization: [1997, 1999]
+  main: [2000, 2022]
+  clean_hs07: [2007, 2022]
+  lite_extension: [2000, 2024]
+
+storage:
+  absolute_limit_gb: 150
+  hard_stop_gb: 120
+  reserve_gb: 30
+  raw_quota_gb: 20
+  intermediate_quota_gb: 25
+  temporary_quota_gb: 25
+  output_quota_gb: 10
+
+network:
+  direct_only: true
+  reject_proxy_environment: true
+  bypass_system_proxy: true
+  rejected_interface_prefixes: [utun, ppp, ipsec, tun]
+  require_no_connected_tunnel: true
+  allow_logged_user_route_exception: true
+
+gad:
+  baseline: [2000, 2004]
+  half_life_years: 5
+  alternative_half_lives: [3, 8, 10]
+  lower_bound: 0
+
+threshold:
+  search_percentiles: [20, 80]
+  minimum_regime_share: 0.20
+  selection_outcome: green_industrial_upgrading_index
+
+horizons:
+  environmental: [0, 1, 2, 3]
+  environmental_confirmatory: [1, 2, 3]
+  industrial: [3, 4, 5, 6, 7, 8]

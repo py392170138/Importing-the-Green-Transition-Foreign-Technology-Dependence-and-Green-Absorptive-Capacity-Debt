@@ -1,0 +1,46 @@
+{
+  "table_id": "sample_cell",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "analysis_family", "outcome_id", "horizon", "gad_version", "sample_version"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "created_at_utc": "String",
+    "analysis_family": "String",
+    "outcome_id": "String",
+    "horizon": "Int16",
+    "gad_version": "String",
+    "sample_version": "String",
+    "role": "String",
+    "candidate_rows": "UInt32",
+    "n": "UInt32",
+    "sample_loss": "UInt32",
+    "sample_loss_share": "Float64",
+    "economies": "UInt16",
+    "clusters": "UInt16",
+    "year_min": "Int16",
+    "year_max": "Int16"
+  },
+  "units": {
+    "horizon": "years_after_treatment",
+    "candidate_rows": "rows_before_complete_case_filter",
+    "n": "complete_case_rows",
+    "sample_loss": "rows_removed_by_complete_case_filter",
+    "sample_loss_share": "fraction_of_candidate_rows",
+    "year_min": "calendar_year",
+    "year_max": "calendar_year"
+  },
+  "period": null,
+  "zero_semantics": {
+    "sample_loss": "zero_when_no_candidate_row_is_removed",
+    "sample_loss_share": "zero_when_no_candidate_row_is_removed"
+  },
+  "null_semantics": {},
+  "transformations": [
+    "apply_registered_cell_and_family_flags_before_complete_case_filter",
+    "count_complete_cases_using_only_the_frozen_analysis_columns"
+  ]
+}

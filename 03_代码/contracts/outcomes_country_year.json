@@ -1,0 +1,43 @@
+{
+  "table_id": "outcomes_country_year",
+  "schema_version": "1.0.0",
+  "primary_key": ["economy_id", "year"],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "renewable_capacity_additions_mw_per_million": "Float64",
+    "renewable_capacity_additions_retirement_or_revision": "Boolean",
+    "co2_tonnes_per_million_current_usd": "Float64",
+    "energy_intensity_mj_per_ppp_gdp": "Float64",
+    "green_export_complexity": "Float64",
+    "green_export_share": "Float64",
+    "domestic_value_added_share": "Float64",
+    "foreign_value_added_dependence": "Float64",
+    "asinh_weighted_green_imports": "Float64"
+  },
+  "units": {
+    "renewable_capacity_additions_mw_per_million": "MW_per_million_persons",
+    "co2_tonnes_per_million_current_usd": "tonnes_CO2e_per_million_current_USD",
+    "energy_intensity_mj_per_ppp_gdp": "MJ_per_2021_PPP_GDP",
+    "green_export_complexity": "population_standard_deviations",
+    "green_export_share": "fraction_of_all_goods_exports",
+    "domestic_value_added_share": "percent_of_gross_exports",
+    "foreign_value_added_dependence": "fraction_of_final_demand_value_added",
+    "asinh_weighted_green_imports": "asinh_current_USD"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "renewable_capacity_additions_mw_per_million": "reported_zero_or_no_net_capacity_addition",
+    "green_export_share": "reported_zero_weighted_green_exports",
+    "asinh_weighted_green_imports": "reported_zero_weighted_green_imports"
+  },
+  "transformations": [
+    "retain_raw_unwinsorized_uninterpolated_annual_outcome_bases",
+    "renewable_capacity_additions_divided_by_positive_population_in_millions",
+    "CO2_Mt_times_one_trillion_divided_by_positive_current_USD_GDP",
+    "use_contemporaneous_GPCI_for_green_export_complexity",
+    "use_fixed_activity_weighted_EXGR_DVA_share",
+    "store_asinh_weighted_green_imports_without_shock_multiplication",
+    "retain_negative_IRENA_additions_and_retirement_or_revision_flag"
+  ]
+}

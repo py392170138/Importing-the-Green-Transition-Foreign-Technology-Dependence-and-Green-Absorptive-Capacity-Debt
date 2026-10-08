@@ -1,0 +1,42 @@
+{
+  "table_id": "ilostat_skill",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "economy_id",
+    "year",
+    "series_id"
+  ],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "series_id": "String",
+    "skill_share": "Float64",
+    "numerator_thousands": "Float64",
+    "denominator_thousands": "Float64",
+    "unit": "String",
+    "source_ref": "String",
+    "source_status": "String",
+    "robustness_only": "Boolean",
+    "missing_reason": "String"
+  },
+  "units": {
+    "skill_share": "share_0_to_1",
+    "numerator_thousands": "thousand_persons",
+    "denominator_thousands": "thousand_persons"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "skill_share": "reported_zero_is_retained_when_the_same_source_denominator_is_positive",
+    "numerator_thousands": "reported_zero_is_retained",
+    "denominator_thousands": "nonpositive_denominator_makes_the_share_missing"
+  },
+  "transformations": [
+    "extract_each_RDS_with_base_R_to_bounded_UTF8_CSV",
+    "retain_total_sex_and_best_source_equal_one",
+    "sum_only_ISCO08_31_35_71_72_74_81_82",
+    "require_same_indicator_source_economy_year_sex_and_classification_denominator",
+    "keep_EMP_TEMP_as_primary_and_never_splice_robustness_series",
+    "construct_EMP_STEM_share_against_same_source_EMP_TEMP_total",
+    "remove_temporary_CSV_only_after_authoritative_Parquet_commit"
+  ]
+}

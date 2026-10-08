@@ -1,0 +1,55 @@
+{
+  "table_id": "shift_share_weight",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "analysis_family", "outcome_id", "horizon", "gad_version", "sample_version", "shock_id"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "evidence_policy_sha256": "String",
+    "created_at_utc": "String",
+    "year_min": "Int16",
+    "year_max": "Int16",
+    "r_version": "String",
+    "python_version": "String",
+    "julia_version": "String",
+    "package_versions_json": "String",
+    "random_seed": "UInt64",
+    "ssc_config": "String",
+    "reference_distribution": "String",
+    "reference_df": "Float64",
+    "analysis_family": "String",
+    "outcome_id": "String",
+    "horizon": "Int16",
+    "gad_version": "String",
+    "sample_version": "String",
+    "shock_id": "String",
+    "exporter": "String",
+    "hs6": "String",
+    "year": "Int16",
+    "shock_cluster_id": "String",
+    "signed_weight": "Float64",
+    "absolute_weight": "Float64",
+    "absolute_rank": "UInt16"
+  },
+  "units": {
+    "horizon": "years_after_treatment",
+    "year": "calendar_year",
+    "signed_weight": "generalized_rotemberg_weight",
+    "absolute_weight": "absolute_generalized_rotemberg_weight",
+    "absolute_rank": "descending_absolute_weight_rank"
+  },
+  "period": [2000, 2022],
+  "zero_semantics": {
+    "signed_weight": "valid_exact_zero_generalized_weight",
+    "absolute_weight": "zero_exactly_when_signed_weight_is_zero"
+  },
+  "null_semantics": {},
+  "transformations": [
+    "shock_id_is_exporter_hs6_year_and_shock_cluster_id_is_exporter_hs6",
+    "cluster_shock_score_contributions_by_exporter_hs6_allowing_serial_correlation",
+    "retain_the_top_100_shock_observations_by_absolute_generalized_weight_per_model"
+  ]
+}

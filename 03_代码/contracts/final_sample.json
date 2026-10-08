@@ -1,0 +1,51 @@
+{
+  "table_id": "final_sample",
+  "schema_version": "1.0.0",
+  "primary_key": ["economy_id"],
+  "columns": {
+    "economy_id": "String",
+    "source_sample_version": "String",
+    "rule_economy_eligible": "Boolean",
+    "rule_positive_import_baseline": "Boolean",
+    "rule_baseline_share_identifiable": "Boolean",
+    "rule_complete_absorption_1996": "Boolean",
+    "rule_complete_initialization_1997_1999": "Boolean",
+    "rule_minimum_valid_main_years": "Boolean",
+    "rule_complete_lite_absorption_1996": "Boolean",
+    "rule_complete_lite_initialization_1997_1999": "Boolean",
+    "rule_minimum_valid_lite_years": "Boolean",
+    "valid_main_years": "Int16",
+    "valid_lite_years": "Int16",
+    "positive_import_baseline_years": "UInt8",
+    "core_eligible": "Boolean",
+    "lite_eligible": "Boolean",
+    "descriptive_only_2023": "Boolean",
+    "descriptive_only_2024": "Boolean",
+    "taiwan_robustness_eligible": "Boolean",
+    "micro_robustness_eligible": "Boolean",
+    "exclusion_reason": "String"
+  },
+  "units": {
+    "valid_main_years": "years_in_2000_2022",
+    "valid_lite_years": "years_in_2000_2024",
+    "positive_import_baseline_years": "years_in_1996_1999"
+  },
+  "period": null,
+  "zero_semantics": {
+    "valid_main_years": "no_valid_main_component_years",
+    "valid_lite_years": "no_valid_lite_component_years",
+    "positive_import_baseline_years": "no_positive_green_import_baseline_years"
+  },
+  "null_semantics": {
+    "exclusion_reason": "null_exactly_when_core_eligible"
+  },
+  "transformations": [
+    "freeze_structural_economy_eligibility_without_any_outcome_coverage_input",
+    "require_complete_absorption_1996_and_uninterrupted_1997_1999_initialization",
+    "require_at_least_twelve_valid_years_and_two_positive_import_baseline_years",
+    "require_identifiable_main_fixed_baseline_share",
+    "retain_one_boolean_per_rule_and_ordered_first_exclusion_reason",
+    "freeze_lite_eligibility_and_2023_2024_descriptive_flags",
+    "retain_taiwan_and_micro_robustness_frames_without_changing_confirmatory_flags"
+  ]
+}

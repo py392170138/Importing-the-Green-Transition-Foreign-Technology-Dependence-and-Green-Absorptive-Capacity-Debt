@@ -1,0 +1,45 @@
+{
+  "table_id": "iv_baseline_shares",
+  "schema_version": "1.0.0",
+  "primary_key": ["taxonomy_version", "share_version", "importer", "exporter", "hs6"],
+  "columns": {
+    "taxonomy_version": "String",
+    "share_version": "String",
+    "importer": "String",
+    "exporter": "String",
+    "hs6": "String",
+    "mean_weighted_import_usd": "Float64",
+    "baseline_mean_total_weighted_import_usd": "Float64",
+    "raw_baseline_share": "Float64",
+    "retained": "Boolean",
+    "retained_coverage": "Float64",
+    "baseline_share": "Float64",
+    "raw_cell_count": "UInt32",
+    "retained_cell_count": "UInt32",
+    "coverage_eligible": "Boolean",
+    "confirmatory_specification": "Boolean",
+    "confirmatory_baseline_eligible": "Boolean"
+  },
+  "units": {
+    "mean_weighted_import_usd": "mean_1996_1999_current_USD",
+    "baseline_mean_total_weighted_import_usd": "mean_1996_1999_current_USD",
+    "raw_baseline_share": "fraction_of_importer_baseline_weighted_green_imports",
+    "retained_coverage": "fraction_of_raw_baseline_share",
+    "baseline_share": "renormalized_fraction_of_retained_baseline_imports"
+  },
+  "zero_semantics": {
+    "baseline_share": "null_for_dropped_cells_and_positive_for_retained_cells",
+    "retained_coverage": "zero_only_when_no_cell_survives_the_threshold"
+  },
+  "null_semantics": {
+    "baseline_share": "null_if_and_only_if_retained_is_false; retained_cells_have_raw_baseline_share_divided_by_recomputed_retained_coverage"
+  },
+  "transformations": [
+    "mean_1996_1999_fixed_importer_supplier_product_weighted_green_imports",
+    "divide_by_importer_mean_total_over_the_same_four_years",
+    "apply_threshold_to_raw_share_before_renormalization",
+    "retain_pre_renormalization_coverage",
+    "all_cells_main_0_0001_and_robustness_0_0005_versions",
+    "no_year_or_outcome_input"
+  ]
+}

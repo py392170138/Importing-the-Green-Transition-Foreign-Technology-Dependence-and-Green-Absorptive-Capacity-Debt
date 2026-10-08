@@ -1,0 +1,42 @@
+{
+  "table_id": "economy_crosswalk_v1",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "source_id",
+    "source_code"
+  ],
+  "columns": {
+    "source_id": "String",
+    "source_code": "String",
+    "source_label": "String",
+    "source_native_iso2": "String",
+    "source_native_iso3": "String",
+    "economy_id": "String",
+    "economy_name": "String",
+    "mapping_method": "String",
+    "mapping_version": "String",
+    "review_status": "String",
+    "confirmatory_eligible": "Boolean",
+    "exclusion_reason": "String",
+    "reexport_hub": "Boolean",
+    "micro_economy": "Boolean",
+    "sample_version": "String",
+    "population": "Float64",
+    "population_year": "Int16",
+    "source_dictionary_sha256": "String",
+    "mapping_notes": "String"
+  },
+  "units": {
+    "population": "persons"
+  },
+  "zero_semantics": {
+    "population": "reported_zero_is_retained_but_fails_the_population_floor"
+  },
+  "transformations": [
+    "exact_source_code_before_exact_normalized_label",
+    "frozen_override_after_deterministic_mapping",
+    "no_automatic_fuzzy_matching",
+    "population_reference_is_latest_nonmissing_value_at_or_before_2022",
+    "population_floor_is_inclusive_at_one_million"
+  ]
+}

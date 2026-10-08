@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "count": 2,
+    "page": 1,
+    "per_page": 10,
+    "cost_usd": 0.001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/T1001",
+      "display_name": "Wind Energy Technology",
+      "description": "Wind turbine design and grid integration.",
+      "works_count": 1200,
+      "domain": {"display_name": "Physical Sciences"},
+      "field": {"display_name": "Energy"},
+      "subfield": {"display_name": "Renewable Energy"}
+    },
+    {
+      "id": "https://openalex.org/T1002",
+      "display_name": "Generic Management",
+      "description": "General management research.",
+      "works_count": 900,
+      "domain": {"display_name": "Social Sciences"},
+      "field": {"display_name": "Business"},
+      "subfield": {"display_name": "Management"}
+    }
+  ]
+}

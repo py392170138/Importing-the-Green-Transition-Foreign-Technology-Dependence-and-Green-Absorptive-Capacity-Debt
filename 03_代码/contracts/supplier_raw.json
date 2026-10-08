@@ -1,0 +1,29 @@
+{
+  "table_id": "supplier_raw",
+  "schema_version": "1.0.0",
+  "primary_key": ["taxonomy_version", "economy_id", "year"],
+  "columns": {
+    "taxonomy_version": "String",
+    "economy_id": "String",
+    "year": "Int16",
+    "gud_raw": "Float64",
+    "gud_raw_reason": "String",
+    "grd_raw": "Float64",
+    "grd_raw_reason": "String"
+  },
+  "units": {
+    "gud_raw": "sum_green_upstream_product_weights",
+    "grd_raw": "green_upstream_weighted_mean_product_space_relatedness_density"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "gud_raw": "zero_is_valid_when_export_coverage_is_normal_and_no_positive_weight_upstream_product_has_RCA_at_least_one",
+    "grd_raw": "zero_is_valid_when_all_eligible_opportunity_denominators_are_positive_and_no_existing_RCA_capability_is_proximate"
+  },
+  "transformations": [
+    "product_proximity_is_the_minimum_of_the_two_contemporaneous_conditional_coexport_probabilities",
+    "GUD_sums_positive_green_upstream_weights_for_RCA_at_least_one_products",
+    "GRD_excludes_RCA_at_least_one_opportunities_and_each_product_itself_from_relatedness_density",
+    "zero_proximity_denominators_and_missing_export_coverage_remain_missing_with_reason_codes"
+  ]
+}

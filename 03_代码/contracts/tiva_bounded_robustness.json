@@ -1,0 +1,29 @@
+{
+  "table_id": "tiva_bounded_robustness",
+  "schema_version": "1.0.0",
+  "primary_key": ["economy_id", "year", "specification_id"],
+  "columns": {
+    "economy_id": "String",
+    "year": "Int16",
+    "specification_id": "String",
+    "gfvad_raw": "Float64",
+    "dvashare_raw": "Float64",
+    "gfvad_missing_reason": "String",
+    "dvashare_missing_reason": "String",
+    "gfvad_out_of_range": "Boolean",
+    "dvashare_out_of_range": "Boolean"
+  },
+  "units": {
+    "gfvad_raw": "fraction_of_final_demand_value_added",
+    "dvashare_raw": "percent_of_gross_exports"
+  },
+  "period": [1995, 2022],
+  "zero_semantics": {
+    "gfvad_raw": "zero_is_valid_when_all_required_activity_ratios_are_in_range",
+    "dvashare_raw": "zero_is_valid_when_all_required_activity_shares_are_in_range"
+  },
+  "transformations": [
+    "bounded_confirmatory_robustness_is_physically_separate_from_the_four_specification_authority",
+    "retain_out_of_range_flags_and_replace_the_robustness_aggregate_with_null_without_clipping_or_reweighting"
+  ]
+}

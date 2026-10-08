@@ -1,0 +1,37 @@
+{
+  "table_id": "tiva_activity_weights",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "economy_id",
+    "activity",
+    "weight_version"
+  ],
+  "columns": {
+    "economy_id": "String",
+    "activity": "String",
+    "weight_version": "String",
+    "activity_weight": "Float64",
+    "baseline_mean_prod_usd_millions": "Float64",
+    "baseline_years_observed": "UInt8",
+    "frozen_baseline_start": "Int16",
+    "frozen_baseline_end": "Int16",
+    "unit": "String",
+    "missing_reason": "String"
+  },
+  "units": {
+    "activity_weight": "share_0_to_1",
+    "baseline_mean_prod_usd_millions": "USD_millions"
+  },
+  "period": null,
+  "zero_semantics": {
+    "activity_weight": "zero_is_valid_for_a_zero_output_activity_when_the_variant_denominator_is_positive",
+    "baseline_mean_prod_usd_millions": "reported_zero_is_retained"
+  },
+  "transformations": [
+    "mean_PROD_over_2000_2004_by_economy_and_leaf_activity",
+    "require_all_five_baseline_years_for_every_variant_activity",
+    "normalize_country_specific_weights_to_one",
+    "freeze_confirmatory_broad_equipment_only_and_equal_weight_versions",
+    "make_the_entire_economy_variant_missing_when_the_denominator_is_nonpositive"
+  ]
+}

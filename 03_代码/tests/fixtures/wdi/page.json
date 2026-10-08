@@ -1,0 +1,32 @@
+[
+  {
+    "page": 1,
+    "pages": 1,
+    "per_page": 20000,
+    "total": 2,
+    "sourceid": "2",
+    "lastupdated": "2026-07-13"
+  },
+  [
+    {
+      "indicator": {"id": "EN.GHG.CO2.MT.CE.AR5", "value": "CO2"},
+      "country": {"id": "AA", "value": "Alpha"},
+      "countryiso3code": "AAA",
+      "date": "2000",
+      "value": 1.25,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {"id": "EN.GHG.CO2.MT.CE.AR5", "value": "CO2"},
+      "country": {"id": "BB", "value": "Beta"},
+      "countryiso3code": "BBB",
+      "date": "2000",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    }
+  ]
+]

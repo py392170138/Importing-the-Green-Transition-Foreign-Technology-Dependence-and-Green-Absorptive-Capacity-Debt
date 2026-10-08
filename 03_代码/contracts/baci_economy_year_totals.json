@@ -1,0 +1,48 @@
+{
+  "table_id": "baci_economy_year_totals",
+  "schema_version": "1.0.0",
+  "primary_key": [
+    "taxonomy_version",
+    "year",
+    "economy_id"
+  ],
+  "columns": {
+    "taxonomy_version": "String",
+    "year": "Int16",
+    "economy_id": "String",
+    "exports_usd": "Float64",
+    "imports_usd": "Float64",
+    "export_quantity_tonnes": "Float64",
+    "import_quantity_tonnes": "Float64",
+    "export_quantity_observation_count": "UInt64",
+    "import_quantity_observation_count": "UInt64",
+    "export_source_rows": "UInt64",
+    "import_source_rows": "UInt64",
+    "reported_as_exporter": "Boolean",
+    "reported_as_importer": "Boolean"
+  },
+  "units": {
+    "exports_usd": "current_USD",
+    "imports_usd": "current_USD",
+    "export_quantity_tonnes": "metric_tonnes",
+    "import_quantity_tonnes": "metric_tonnes",
+    "export_quantity_observation_count": "source_rows_with_reported_quantity",
+    "import_quantity_observation_count": "source_rows_with_reported_quantity",
+    "export_source_rows": "source_rows",
+    "import_source_rows": "source_rows"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "exports_usd": "zero_is_retained_and_source_row_count_identifies_reporting_coverage",
+    "imports_usd": "zero_is_retained_and_source_row_count_identifies_reporting_coverage",
+    "export_quantity_tonnes": "reported_zero_is_retained_and_null_means_no_reported_quantity",
+    "import_quantity_tonnes": "reported_zero_is_retained_and_null_means_no_reported_quantity",
+    "export_source_rows": "zero_means_no_valid_export_record_for_the_economy_year",
+    "import_source_rows": "zero_means_no_valid_import_record_for_the_economy_year"
+  },
+  "transformations": [
+    "outer_join_export_and_import_coverage_to_frozen_BACI_economy_universe",
+    "retain_reported_zero_trade",
+    "use_row_coverage_flags_to_distinguish_zero_from_no_reporting"
+  ]
+}

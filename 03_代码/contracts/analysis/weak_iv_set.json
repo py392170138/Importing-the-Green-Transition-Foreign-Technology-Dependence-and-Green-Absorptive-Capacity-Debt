@@ -1,0 +1,69 @@
+{
+  "table_id": "weak_iv_set",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "outcome_id", "horizon", "gad_version", "sample_version"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "evidence_policy_sha256": "String",
+    "created_at_utc": "String",
+    "year_min": "Int16",
+    "year_max": "Int16",
+    "r_version": "String",
+    "python_version": "String",
+    "julia_version": "String",
+    "package_versions_json": "String",
+    "random_seed": "UInt64",
+    "ssc_config": "String",
+    "reference_distribution": "String",
+    "reference_df": "Float64",
+    "estimator": "String",
+    "analysis_family": "String",
+    "outcome_id": "String",
+    "horizon": "Int16",
+    "gad_version": "String",
+    "sample_version": "String",
+    "beta_low": "Float64",
+    "beta_high": "Float64",
+    "theta_low": "Float64",
+    "theta_high": "Float64",
+    "status": "String",
+    "expansions": "UInt8",
+    "accepted_points": "UInt32",
+    "accepted_hash": "String",
+    "conventional_point_accepted": "Boolean",
+    "n": "UInt32",
+    "economies": "UInt16",
+    "clusters": "UInt16",
+    "inference_status": "String"
+  },
+  "units": {
+    "horizon": "years_after_treatment",
+    "beta_low": "outcome_units_per_frozen_gimc_unit",
+    "beta_high": "outcome_units_per_frozen_gimc_unit",
+    "theta_low": "outcome_units_per_frozen_gimc_gad_interaction_unit",
+    "theta_high": "outcome_units_per_frozen_gimc_gad_interaction_unit",
+    "expansions": "grid_expansions",
+    "accepted_points": "grid_points"
+  },
+  "period": null,
+  "zero_semantics": {
+    "expansions": "zero_when_the_initial_registered_grid_is_sufficient",
+    "accepted_points": "zero_when_the_anderson_rubin_acceptance_set_is_empty"
+  },
+  "null_semantics": {
+    "beta_low": "null_when_status_is_empty_or_unbounded_on_the_lower_beta_axis",
+    "beta_high": "null_when_status_is_empty_or_unbounded_on_the_upper_beta_axis",
+    "theta_low": "null_when_status_is_empty_or_unbounded_on_the_lower_theta_axis",
+    "theta_high": "null_when_status_is_empty_or_unbounded_on_the_upper_theta_axis"
+  },
+  "transformations": [
+    "two_parameter_anderson_rubin_inversion_for_gimc_and_gimc_times_gad",
+    "use_the_registered_121_by_121_grid_and_at_most_four_expansions",
+    "hash_the_canonical_ordered_accepted_grid_points_including_the_empty_set",
+    "persist_direct_membership_of_the_conventional_two_parameter_point_in_the_accepted_grid"
+  ]
+}

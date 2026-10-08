@@ -1,0 +1,47 @@
+{
+  "class": "dataset",
+  "label": "generation fixture",
+  "source": "IRENA fixture",
+  "updated": "2026-01-01T00:00:00Z",
+  "id": ["Grid connection", "Year", "Technology", "Country/area", "Data Type"],
+  "size": [3, 3, 1, 1, 1],
+  "dimension": {
+    "Grid connection": {
+      "label": "Grid connection",
+      "category": {
+        "index": {"all": 0, "on": 1, "off": 2},
+        "label": {"all": "All", "on": "On-grid", "off": "Off-grid"}
+      }
+    },
+    "Year": {
+      "label": "Year",
+      "category": {
+        "index": {"y2": 0, "y0": 1, "y1": 2},
+        "label": {"y2": "2002", "y0": "2000", "y1": "2001"}
+      }
+    },
+    "Technology": {
+      "label": "Technology",
+      "category": {
+        "index": {"total": 0},
+        "label": {"total": "Total renewable"}
+      }
+    },
+    "Country/area": {
+      "label": "Country/area",
+      "category": {
+        "index": {"AAA": 0},
+        "label": {"AAA": "Alpha"}
+      }
+    },
+    "Data Type": {
+      "label": "Data Type",
+      "category": {
+        "index": {"gwh": 0},
+        "label": {"gwh": "Electricity Generation (GWh)"}
+      }
+    }
+  },
+  "value": [110.0, 100.0, 90.0, 999.0, 999.0, 999.0, 999.0, 999.0, 999.0],
+  "version": "2.0"
+}

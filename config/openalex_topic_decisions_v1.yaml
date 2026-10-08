@@ -1,0 +1,180 @@
+schema_version: 1
+default_exclusion_rule: exclude_not_direct_green_technology_or_incidental_keyword_match
+included_topics:
+  Organic Electronics and Photovoltaics:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_photovoltaic_material_or_device_technology
+  Photovoltaic System Optimization Techniques:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_photovoltaic_system_technology
+  Solar Thermal and Photovoltaic Systems:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_solar_generation_system_technology
+  Solar Radiation and Photovoltaics:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_photovoltaic_resource_and_device_technology
+  Photovoltaic Systems and Sustainability:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: photovoltaic_system_lifecycle_and_end_of_life_technology
+  solar cell performance optimization:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_high_efficiency_solar_cell_technology
+  Wind Turbine Control Systems:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_wind_generation_and_grid_control_technology
+  Wind Energy Research and Development:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_wind_turbine_and_farm_technology
+  Geothermal Energy Systems and Applications:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_geothermal_energy_system_technology
+  Bioenergy crop production and management:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_bioenergy_feedstock_capability
+  Anaerobic Digestion and Biogas Production:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_waste_to_biogas_process_technology
+  Forest Biomass Utilization and Management:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_sustainable_biomass_utilization_capability
+  Biofuel production and bioconversion:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_biofuel_conversion_technology
+  Advancements in Battery Materials:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_rechargeable_battery_material_technology
+  Advanced Battery Materials and Technologies:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_advanced_battery_technology
+  Advanced battery technologies research:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_grid_storage_battery_technology
+  Supercapacitor Materials and Fabrication:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_electrochemical_storage_technology
+  Phase Change Materials Research:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_thermal_energy_storage_technology
+  Microgrid Control and Optimization:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_microgrid_storage_and_renewable_integration_technology
+  Multilevel Inverters and Converters:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_renewable_power_conversion_technology
+  Silicon Carbide Semiconductor Technologies:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_high_efficiency_power_electronics_technology
+  Advanced DC-DC Converters:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_renewable_and_vehicle_power_conversion_technology
+  Real-time simulation and control systems:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_power_system_and_smart_grid_control_technology
+  Smart Grid Energy Management:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_smart_grid_demand_and_energy_management_technology
+  Smart Grid and Power Systems:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_smart_grid_and_renewable_integration_technology
+  Integrated Energy Systems Optimization:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_integrated_renewable_energy_system_technology
+  Power Systems and Renewable Energy:
+    canonical_seed_family: storage_and_grids
+    inclusion_rule: direct_storage_enabled_renewable_grid_technology
+  Energy Efficiency and Management:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_industrial_energy_efficiency_capability
+  Building Energy and Comfort Optimization:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_building_energy_efficiency_technology
+  Building energy efficiency and sustainability:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_building_envelope_and_system_efficiency_technology
+  Refrigeration and Air Conditioning Technologies:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_heat_pump_and_efficient_hvac_technology
+  Electric Vehicles and Infrastructure:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_electric_vehicle_and_charging_technology
+  Advanced Battery Technologies Research:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_electric_vehicle_battery_management_technology
+  Electric and Hybrid Vehicle Technologies:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_electric_vehicle_propulsion_technology
+  Electric Motor Design and Analysis:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_high_efficiency_electric_drive_technology
+  Induction Heating and Inverter Technology:
+    canonical_seed_family: efficiency_and_electrification
+    inclusion_rule: direct_electrified_heating_and_inverter_technology
+  Carbon Dioxide Capture Technologies:
+    canonical_seed_family: low_carbon_industry
+    inclusion_rule: direct_carbon_capture_process_technology
+  CO2 Sequestration and Geologic Interactions:
+    canonical_seed_family: low_carbon_industry
+    inclusion_rule: direct_carbon_storage_and_sequestration_technology
+  Chemical Looping and Thermochemical Processes:
+    canonical_seed_family: low_carbon_industry
+    inclusion_rule: direct_low_carbon_chemical_looping_process
+  Hybrid Renewable Energy Systems:
+    canonical_seed_family: low_carbon_industry
+    inclusion_rule: direct_renewable_hydrogen_electrolysis_and_power_to_gas_technology
+  Advancements in Solid Oxide Fuel Cells:
+    canonical_seed_family: low_carbon_industry
+    inclusion_rule: direct_high_temperature_electrolysis_and_fuel_cell_technology
+  Concrete and Cement Materials Research:
+    canonical_seed_family: low_carbon_industry
+    inclusion_rule: direct_low_clinker_and_alternative_cement_technology
+  Iron and Steelmaking Processes:
+    canonical_seed_family: low_carbon_industry
+    inclusion_rule: direct_hydrogen_reduction_and_efficient_steelmaking_technology
+  Extraction and Separation Processes:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_battery_and_critical_material_recycling_technology
+  Recycling and utilization of industrial and municipal waste in materials production:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_waste_reuse_in_materials_production_technology
+  Sustainable Industrial Ecology:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_industrial_symbiosis_and_resource_network_capability
+  Recycling and Waste Management Techniques:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_electronic_waste_recovery_technology
+  Recycled Aggregate Concrete Performance:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_construction_material_recycling_technology
+  Fiber-reinforced polymer composites:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_composite_material_recycling_technology
+  Phosphorus and nutrient management:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_nutrient_recovery_and_reuse_technology
+  Subcritical and Supercritical Water Processes:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_waste_treatment_and_resource_recovery_process
+  Odor and Emission Control Technologies:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_waste_gas_and_emission_treatment_technology
+  Advanced oxidation water treatment:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_advanced_water_treatment_technology
+  Water Treatment and Disinfection:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_water_disinfection_and_byproduct_control_technology
+  Membrane Separation Technologies:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_membrane_water_purification_technology
+  Adsorption and biosorption for pollutant removal:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_water_pollutant_removal_technology
+  Coagulation and Flocculation Studies:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_water_and_sludge_treatment_technology
+  Freezing and Crystallization Processes:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_desalination_and_wastewater_concentration_technology
+  Chemical Analysis and Environmental Impact:
+    canonical_seed_family: circular_resources
+    inclusion_rule: direct_perchlorate_bioremediation_and_water_treatment_technology

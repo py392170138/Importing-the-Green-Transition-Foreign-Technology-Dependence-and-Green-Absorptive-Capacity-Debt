@@ -1,0 +1,45 @@
+{
+  "table_id": "trade_components_raw",
+  "schema_version": "1.0.0",
+  "primary_key": ["taxonomy_version", "economy_id", "year"],
+  "columns": {
+    "taxonomy_version": "String",
+    "economy_id": "String",
+    "year": "Int16",
+    "green_imports_usd": "Float64",
+    "green_exports_usd": "Float64",
+    "gdp_current_usd": "Float64",
+    "trade_coverage_normal": "Boolean",
+    "green_import_intensity_raw": "Float64",
+    "green_import_intensity_reason": "String",
+    "green_import_complexity_raw": "Float64",
+    "green_import_complexity_reason": "String",
+    "gnir_raw": "Float64",
+    "gnir_reason": "String",
+    "gpci_lag_year": "Int16",
+    "gpci_source_year": "Int16"
+  },
+  "units": {
+    "green_imports_usd": "current_USD",
+    "green_exports_usd": "current_USD",
+    "gdp_current_usd": "current_USD",
+    "green_import_intensity_raw": "ln_one_plus_ratio",
+    "green_import_complexity_raw": "lagged_GPCI_import_share_weighted_mean",
+    "gnir_raw": "fraction",
+    "gpci_lag_year": "calendar_year",
+    "gpci_source_year": "calendar_year"
+  },
+  "period": [1996, 2024],
+  "zero_semantics": {
+    "green_imports_usd": "reported_zero_is_retained_when_trade_coverage_is_normal",
+    "green_exports_usd": "reported_zero_is_retained_when_trade_coverage_is_normal",
+    "green_import_intensity_raw": "zero_means_a_valid_zero_green_import_ratio",
+    "gnir_raw": "zero_means_valid_zero_green_imports_and_positive_green_exports"
+  },
+  "transformations": [
+    "green_import_intensity_is_log_one_plus_weighted_green_imports_over_positive_GDP",
+    "green_import_complexity_uses_only_GPCI_product_year_t_minus_one",
+    "GNIR_uses_weighted_green_imports_over_total_weighted_green_trade",
+    "preserve_explicit_missing_reason_codes_without_standardization_or_winsorization"
+  ]
+}

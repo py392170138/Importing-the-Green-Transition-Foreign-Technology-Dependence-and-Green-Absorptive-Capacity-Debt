@@ -1,0 +1,22 @@
+schema_version: 1
+dataflow: OECD.STI.PIE,DSD_TIVA_MAINLV@DF_MAINLV,1.1
+base_url: https://sdmx.oecd.org/sti-public/rest/data/OECD.STI.PIE,DSD_TIVA_MAINLV@DF_MAINLV,1.1
+supplements:
+  - source_id: oecd_tiva_dfd_fva_history
+    measure: DFD_FVA
+    start_year: 1995
+    end_year: 1999
+    counterpart: W
+    unit_measure: USD
+    frequency: A
+    destination: DFD_FVA.all_areas_all_activities.world.1995-1999.csv
+    expected_max_bytes: 134217728
+  - source_id: oecd_tiva_fd_va_full
+    measure: FD_VA
+    start_year: 1995
+    end_year: 2022
+    counterpart: W
+    unit_measure: USD
+    frequency: A
+    destination: FD_VA.all_areas_all_activities.world.1995-2022.csv
+    expected_max_bytes: 134217728

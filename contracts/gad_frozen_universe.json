@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0",
+  "provisional_core_count": 72,
+  "economy_ids_sha256": "67aadfeb8d71d674d1d2e4c93a23f6ed69023c158d8d86b671eec3db1d28b890",
+  "canonicalization": "SHA-256 over sorted economy_id values joined with LF and a terminal LF"
+}

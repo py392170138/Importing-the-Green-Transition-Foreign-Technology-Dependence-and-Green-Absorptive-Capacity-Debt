@@ -1,0 +1,6 @@
+schema_version: 1
+default_exclusion_rule: exclude_not_direct_green_technology
+included_topics:
+  Wind Energy Technology:
+    canonical_seed_family: renewable_energy
+    inclusion_rule: direct_wind_generation_or_grid_integration_technology

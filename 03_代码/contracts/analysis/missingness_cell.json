@@ -1,0 +1,39 @@
+{
+  "table_id": "missingness_cell",
+  "schema_version": "1.0.0",
+  "primary_key": ["run_id", "analysis_family", "outcome_id", "horizon", "gad_version", "sample_version", "variable"],
+  "columns": {
+    "run_id": "String",
+    "spec_id": "String",
+    "input_authority_hash": "String",
+    "git_commit": "String",
+    "renv_lock_sha256": "String",
+    "created_at_utc": "String",
+    "analysis_family": "String",
+    "outcome_id": "String",
+    "horizon": "Int16",
+    "gad_version": "String",
+    "sample_version": "String",
+    "role": "String",
+    "variable": "String",
+    "candidate_rows": "UInt32",
+    "null_count": "UInt32",
+    "null_share": "Float64"
+  },
+  "units": {
+    "horizon": "years_after_treatment",
+    "candidate_rows": "rows_before_complete_case_filter",
+    "null_count": "null_rows",
+    "null_share": "fraction_of_candidate_rows"
+  },
+  "period": null,
+  "zero_semantics": {
+    "null_count": "zero_when_the_variable_is_complete_in_the_candidate_sample",
+    "null_share": "zero_when_the_variable_is_complete_in_the_candidate_sample"
+  },
+  "null_semantics": {},
+  "transformations": [
+    "measure_nulls_before_exact_complete_case_filter",
+    "use_only_frozen_outcome_treatment_gad_instrument_and_control_columns"
+  ]
+}
